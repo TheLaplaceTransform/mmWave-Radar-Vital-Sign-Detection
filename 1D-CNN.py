@@ -7,14 +7,13 @@ import time
 # 1. 全局超参数与硬件配置
 NUM_SAMPLES = 10000000  # 2000万条数据
 SEQ_LENGTH = 300  # 每条数据 300 个点 (15秒 @ 20Hz)
-BATCH_SIZE = 16384  # 大BatchSize充分榨干64GB统一内存
+BATCH_SIZE = 16384  # BatchSize按照自身电脑情况设置
 EPOCHS = 20  # 数据量够大，10个 Epoch 即可收敛
 LEARNING_RATE = 3e-3
 # 自动检测 Mac M系列芯片的MPS加速，如果不支持则退回 CPU
 device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
 print(f" 当前使用的加速硬件: {device.type.upper()}")
-# 2. 高效数据生成器 (伪标签工厂)
-# 2. 高效数据生成器 (伪标签工厂 - 终极抗干扰版)
+# 2. 高效数据生成器 (伪标签)
 class VitalSignDataset(Dataset):
     def __init__(self, num_samples, seq_length):
         print(f"正在内存中生成 {num_samples} 条带【体动破坏】的微动数据...")
