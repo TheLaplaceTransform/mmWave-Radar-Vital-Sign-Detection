@@ -1,0 +1,16 @@
+# 忽略 Python 编译缓存
+__pycache__/
+*.pyc
+
+# 忽略 Mac 系统特有文件
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# 忽略 IDE 配置文件（如 PyCharm 或 VSCode）
+.idea/
+.vscode/
+
+# 忽略本地临时数据集
+*.csv
+*.bin
